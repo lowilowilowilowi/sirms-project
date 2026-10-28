@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,21 +96,20 @@
             background: #103b69;
         }
 
+        .error {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background: #fee2e2;
+            color: #b91c1c;
+            font-size: 14px;
+        }
+
         .signup {
             text-align: center;
             margin-top: 20px;
             color: #68778a;
             font-size: 14px;
-        }
-
-        .signup a {
-            color: #164e8a;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .signup a:hover {
-            text-decoration: underline;
         }
 
         .footer {
@@ -126,6 +123,7 @@
 
 <body>
     <main class="login-card">
+
         <div class="logo">S</div>
 
         <h1>SIRMS</h1>
@@ -134,21 +132,29 @@
             Student Information and Records Management System
         </p>
 
-        
-<form action="{{ route('login.submit') }}" method="POST">
-    @csrf
+        @if ($errors->any())
+            <div class="error">
+                {{ $errors->first() }}
+            </div>
+        @endif
 
-            <label for="email">Email Address</label>
+        <form action="{{ route('login.submit') }}" method="POST">
+            @csrf
+
+            <label for="username">Username</label>
+
             <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email address"
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                value="{{ old('username') }}"
                 autocomplete="username"
                 required
             >
 
             <label for="password">Password</label>
+
             <input
                 type="password"
                 id="password"
@@ -158,17 +164,19 @@
                 required
             >
 
-            <button type="submit">Log In</button>
-   
-</form>
+            <button type="submit">
+                Log In
+            </button>
+        </form>
 
-<p class="signup">
-    Account access is managed by your school administrator.
-</p>
+        <p class="signup">
+            Account access is managed by your school administrator.
+        </p>
 
-<p class="footer">
-    Authorized users only
-</p>
-</main>
+        <p class="footer">
+            Authorized users only
+        </p>
+
+    </main>
 </body>
 </html>

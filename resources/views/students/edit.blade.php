@@ -6,9 +6,14 @@
     <title>SIRMS - Edit Student</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100 p-6">
+
     <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-2xl font-bold text-gray-800 mb-6">Edit Student Record</h1>
+
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">
+            Edit Student Record
+        </h1>
 
         @if ($errors->any())
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
@@ -21,53 +26,180 @@
         @endif
 
         <form action="{{ route('students.update', $student->id) }}" method="POST">
+
             @csrf
             @method('PUT')
 
+            <!-- Student Number -->
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2">Student Number</label>
-                <input type="text" name="student_number" value="{{ old('student_number', $student->student_number) }}" class="w-full border border-gray-300 p-2 rounded" required>
+                <label class="block text-gray-700 font-bold mb-2">
+                    Student Number
+                </label>
+
+                <input
+                    type="text"
+                    name="student_number"
+                    value="{{ old('student_number', $student->student_number) }}"
+                    class="w-full border border-gray-300 p-2 rounded"
+                    required
+                >
             </div>
 
+            <!-- First Name -->
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2">First Name</label>
-                <input type="text" name="first_name" value="{{ old('first_name', $student->first_name) }}" class="w-full border border-gray-300 p-2 rounded" required>
+                <label class="block text-gray-700 font-bold mb-2">
+                    First Name
+                </label>
+
+                <input
+                    type="text"
+                    name="first_name"
+                    value="{{ old('first_name', $student->first_name) }}"
+                    class="w-full border border-gray-300 p-2 rounded"
+                    required
+                >
             </div>
 
+            <!-- Last Name -->
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2">Last Name</label>
-                <input type="text" name="last_name" value="{{ old('last_name', $student->last_name) }}" class="w-full border border-gray-300 p-2 rounded" required>
+                <label class="block text-gray-700 font-bold mb-2">
+                    Last Name
+                </label>
+
+                <input
+                    type="text"
+                    name="last_name"
+                    value="{{ old('last_name', $student->last_name) }}"
+                    class="w-full border border-gray-300 p-2 rounded"
+                    required
+                >
             </div>
 
+            <!-- Email -->
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2">Email</label>
-                <input type="email" name="email" value="{{ old('email', $student->email) }}" class="w-full border border-gray-300 p-2 rounded" required>
+                <label class="block text-gray-700 font-bold mb-2">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    value="{{ old('email', $student->email) }}"
+                    class="w-full border border-gray-300 p-2 rounded"
+                    required
+                >
             </div>
 
+            <!-- Address -->
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2">Course</label>
-                <input type="text" name="course" value="{{ old('course', $student->course) }}" class="w-full border border-gray-300 p-2 rounded" required>
+                <label class="block text-gray-700 font-bold mb-2">
+                    Address
+                </label>
+
+                <input
+                    type="text"
+                    name="address"
+                    value="{{ old('address', $student->address) }}"
+                    class="w-full border border-gray-300 p-2 rounded"
+                    required
+                >
             </div>
 
+            <!-- Contact Number -->
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2">Year Level</label>
-                <input type="text" name="year_level" value="{{ old('year_level', $student->year_level) }}" class="w-full border border-gray-300 p-2 rounded" required>
+                <label class="block text-gray-700 font-bold mb-2">
+                    Contact Number
+                </label>
+
+                <input
+                    type="text"
+                    name="contact_number"
+                    value="{{ old('contact_number', $student->contact_number) }}"
+                    class="w-full border border-gray-300 p-2 rounded"
+                    required
+                >
             </div>
 
+            <!-- Course -->
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2">Status</label>
-                <select name="status" class="w-full border border-gray-300 p-2 rounded" required>
-                    <option value="Enrolled" {{ old('status', $student->status) == 'Enrolled' ? 'selected' : '' }}>Enrolled</option>
-                    <option value="Inactive" {{ old('status', $student->status) == 'Inactive' ? 'selected' : '' }}>Inactive</option>
-                    <option value="Graduated" {{ old('status', $student->status) == 'Graduated' ? 'selected' : '' }}>Graduated</option>
+                <label class="block text-gray-700 font-bold mb-2">
+                    Course
+                </label>
+
+                <input
+                    type="text"
+                    name="course"
+                    value="{{ old('course', $student->course) }}"
+                    class="w-full border border-gray-300 p-2 rounded"
+                    required
+                >
+            </div>
+
+            <!-- Year Level -->
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">
+                    Year Level
+                </label>
+
+                <input
+                    type="text"
+                    name="year_level"
+                    value="{{ old('year_level', $student->year_level) }}"
+                    class="w-full border border-gray-300 p-2 rounded"
+                    required
+                >
+            </div>
+
+            <!-- Status -->
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">
+                    Status
+                </label>
+
+                <select
+                    name="status"
+                    class="w-full border border-gray-300 p-2 rounded"
+                    required
+                >
+                    <option value="Enrolled"
+                        {{ old('status', $student->status) == 'Enrolled' ? 'selected' : '' }}>
+                        Enrolled
+                    </option>
+
+                    <option value="Inactive"
+                        {{ old('status', $student->status) == 'Inactive' ? 'selected' : '' }}>
+                        Inactive
+                    </option>
+
+                    <option value="Graduated"
+                        {{ old('status', $student->status) == 'Graduated' ? 'selected' : '' }}>
+                        Graduated
+                    </option>
                 </select>
             </div>
 
+            <!-- Buttons -->
             <div class="flex justify-between items-center">
-                <a href="{{ route('students.index') }}" class="text-gray-600 hover:underline">Cancel</a>
-                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update Student</button>
+
+                <a
+                    href="{{ route('students.index') }}"
+                    class="text-gray-600 hover:underline"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                    Update Student
+                </button>
+
             </div>
+
         </form>
+
     </div>
+
 </body>
 </html>

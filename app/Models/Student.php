@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'student_number',
-        'first_name',
-        'last_name',
-        'email',
-        'course',
-        'year_level',
-        'status',
-    ];
+protected $fillable = [
+    'student_number',
+    'first_name',
+    'last_name',
+    'email',
+    'address',
+    'contact_number',
+    'course',
+    'year_level',
+    'status',
+];
 }

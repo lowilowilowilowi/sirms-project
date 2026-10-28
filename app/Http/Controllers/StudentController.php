@@ -31,14 +31,16 @@ class StudentController extends Controller
     // Store a new student record in the database
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'student_number' => 'required|unique:students',
-            'first_name'     => 'required',
-            'last_name'      => 'required',
-            'email'          => 'required|email|unique:students',
-            'course'         => 'required',
-            'year_level'     => 'required',
-        ]);
+      $validated = $request->validate([
+    'student_number' => 'required|unique:students',
+    'first_name' => 'required',
+    'last_name' => 'required',
+    'email' => 'required|email|unique:students',
+    'address' => 'required',
+    'contact_number' => 'required',
+    'course' => 'required',
+    'year_level' => 'required',
+]);
 
         Student::create($validated);
 
@@ -55,14 +57,16 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         $validated = $request->validate([
-            'student_number' => 'required|unique:students,student_number,' . $student->id,
-            'first_name'     => 'required',
-            'last_name'      => 'required',
-            'email'          => 'required|email|unique:students,email,' . $student->id,
-            'course'         => 'required',
-            'year_level'     => 'required',
-            'status'         => 'required',
-        ]);
+    'student_number' => 'required|unique:students,student_number,' . $student->id,
+    'first_name' => 'required',
+    'last_name' => 'required',
+    'email' => 'required|email|unique:students,email,' . $student->id,
+    'address' => 'required',
+    'contact_number' => 'required',
+    'course' => 'required',
+    'year_level' => 'required',
+    'status' => 'required',
+]);
 
         $student->update($validated);
 
